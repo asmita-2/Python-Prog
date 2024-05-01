@@ -1,1 +1,1 @@
-My repository include all my machine learning lab programs like batch-gradient descent, logistic regression, cross validation, decision tree, xgboost, confusion matrix, kernel trick, svm, pca, k-means and heirarchy clustering.
+My repository include all my machine learning lab programs like batch-gradient descent, stochastic ,logistic regression, cross validation, decision tree, xgboost, confusion matrix, kernel trick, svm, pca, k-means and heirarchy clustering.
