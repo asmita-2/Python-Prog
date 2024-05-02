@@ -13,6 +13,7 @@ Decision trees are versatile supervised learning algorithms used for both classi
 XGBoost (Extreme Gradient Boosting) is a powerful ensemble learning technique that improves upon decision trees by employing a boosting approach, sequentially adding decision trees to correct the errors of previous models. It optimizes a differentiable loss function to iteratively grow trees, resulting in enhanced predictive performance and robustness against overfitting compared to traditional decision trees.
 
 A confusion matrix is a table that allows visualization of the performance of an algorithm. It showcases the model's ability to correctly or incorrectly classify instances into various categories. Typically used in supervised learning, it breaks down predictions into true positives, true negatives, false positives, and false negatives. This matrix aids in assessing the accuracy, precision, recall, and F1 score, roc, and pr curve of a predictive model.
+This is shown in confusion_matrix.py file.
 
 The kernel trick is a technique used in machine learning to implicitly map input data into a higher-dimensional space. By applying a kernel function, it computes the inner products between the data points in this higher-dimensional space without explicitly transforming them. This allows nonlinear decision boundaries to be learned efficiently in the original feature space, enhancing the model's ability to capture complex relationships in the data. The kernel trick enables SVMs to classify data that might not be linearly separable in their original space.
 
