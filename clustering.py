@@ -60,12 +60,16 @@ print(b)
 
 
 ###Hierarchical clustering
+
+##generating data.
 np.random.seed(0)
 x = np.random.standard_normal((50, 2))
 # print(x)
 x[:25, 0] += 3
 x[:25, 1] -= 4
 # print(x)
+
+##fitting the model.
 hclust = AgglomerativeClustering
 hc_comp = hclust(distance_threshold=0, n_clusters=None, linkage='complete')
 hc_comp.fit(x)
@@ -73,24 +77,34 @@ hc_av = hclust(distance_threshold=0, n_clusters=None, linkage='average')
 hc_av.fit(x)
 hc_sing = hclust(distance_threshold=0, n_clusters=None, linkage='single')
 hc_sing.fit(x)
+
+##computing distance metric
 d = np.zeros((x.shape[0], x.shape[0]))
 for i in range((x.shape[0])):
     x_ = np.multiply.outer(np.ones(x.shape[0]), x[i])
     d[i] = np.sqrt(np.sum((x-x_)**2, 1))
 hc_sing_pre = hclust(distance_threshold=0, n_clusters=None, metric='precomputed', linkage='single')
 hc_sing_pre.fit(d)
+
+##plotting dendrogram.
 cargs = {'color_threshold':-np.inf, 'above_threshold_color': 'black'}
 linkage_comp = compute_linkage((hc_comp))
+
+### coloring branches of the tree below cut threshold
 fig, ax = plt.subplots(1, 1, figsize=(8, 8))
 dendrogram(linkage_comp, ax=ax, **cargs)
 plt.show()
 fig, ax = plt.subplots(1, 1, figsize=(8, 8))
 dendrogram(linkage_comp, ax=ax, color_threshold=4, above_threshold_color='black')
 plt.show()
+
+###determining the cluster labels for each observation associated with a given cut of the dendrogram
 c = cut_tree(linkage_comp, n_clusters=4).T
 # print(c)
 d = cut_tree(linkage_comp, height=5)
 # print(d)
+
+# scaling variables using standard scalar
 scaler = StandardScaler()
 x_scale = scaler.fit_transform(x)
 hc_comp_scale = hclust(distance_threshold=0, n_clusters=None, linkage='complete').fit(x_scale)
@@ -99,6 +113,7 @@ fig, ax = plt.subplots(1, 1, figsize=(8, 8))
 dendrogram(linkage_comp_scale, ax=ax, **cargs)
 ax.set_title("hierarchical clustering with scaled features")
 plt.show()
+
 x = np.random.standard_normal((30, 3))
 corD = 1 - np.corrcoef(x)
 hc_cor = hclust(linkage='complete', distance_threshold=0, n_clusters=None, metric='precomputed')
