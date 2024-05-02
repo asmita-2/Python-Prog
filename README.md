@@ -17,6 +17,7 @@ A confusion matrix is a table that allows visualization of the performance of an
 This is shown in confusion_matrix.py file.
 
 The kernel trick is a technique used in machine learning to implicitly map input data into a higher-dimensional space. By applying a kernel function, it computes the inner products between the data points in this higher-dimensional space without explicitly transforming them. This allows nonlinear decision boundaries to be learned efficiently in the original feature space, enhancing the model's ability to capture complex relationships in the data. The kernel trick enables SVMs to classify data that might not be linearly separable in their original space.
+This is implemented in kernel_trick.py file.
 
 Support Vector Machines (SVMs) are powerful supervised learning models used for classification and regression tasks. They work by finding the optimal hyperplane that separates different classes in a high-dimensional feature space. SVMs aim to maximize the margin between the hyperplane and the nearest data points from each class, making them robust against overfitting and effective in dealing with high-dimensional data. They can handle linear and nonlinear classification tasks using various kernel functions, such as linear, polynomial, or radial basis function (RBF) kernels.
 
