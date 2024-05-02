@@ -1,4 +1,4 @@
-###This code shows fitting logistic model for a data set "heart.csv" using scikit learn and then implementation of confusion matrix and 
+###This code shows fitting logistic model for the data set "heart.csv" using scikit learn and then implementation of confusion matrix and 
 ###plotting of roc and pr curve from scratch.
 
 import pandas as pd
