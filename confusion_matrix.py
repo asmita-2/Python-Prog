@@ -1,3 +1,6 @@
+###This code shows fitting logistic model for a data set "heart.csv" using scikit learn and then implementation of confusion matrix and 
+###plotting of roc and pr curve from scratch.
+
 import pandas as pd
 import sklearn.datasets
 from sklearn.linear_model import LogisticRegression
@@ -14,17 +17,29 @@ from scipy.cluster.hierarchy import dendrogram, cut_tree
 from ISLP.cluster import compute_linkage
 from sklearn.decomposition import PCA
 
-##Build a logistic regression model for the heart.csv and plot the roc and pr curves without using scikit-learn methods.
+###QUES) Build a logistic regression model for the heart.csv and plot the roc and pr curves without using scikit-learn methods.
+
+###loading the file
 df = pd.read_csv("/home/ibab/movedfiles/heart.csv")
 #print(df)
+
+##dividing the data into features and target.
 x = df.iloc[:, 0:-1]
 y = df.iloc[:, -1]
+
+##splitting the data into test training set.
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3)
+
+##fitting the model
 model = LogisticRegression(max_iter=10000).fit(x_train, y_train)
+
+###getting the probaility score after fitting the model and then dividing it into positive class and negative class.
 y_pred_probability = model.predict_proba(x_test)
 positive_class_prob = y_pred_probability[:, 1]
 negative_class_prob = y_pred_probability[:, 0]
 # print("y predicted probabilities of x_test are: ", "\n", y_pred_probability)
+
+###varying thresholds to get different sensitivity, specificity and precision values to biuld roc and pr curve.
 upper_half = []
 lower_half = []
 threshold = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
@@ -34,17 +49,13 @@ Precision = []
 for m in threshold:
     n = len(positive_class_prob)
     upper = int(n * m)
-    # for i in range(0, int(upper)-1):
-    #     upper_half.append(positive_class_prob[i])
-    # for j in range(int(upper)-1, len(positive_class_prob)):
-    #     lower_half.append(positive_class_prob[j])
-    ###addend does not work for numpy array
     upper_half = positive_class_prob[0:upper]
     lower_half = positive_class_prob[upper:len(positive_class_prob)]
     upper_half = np.array(upper_half)
     lower_half = np.array(lower_half)
     # print(upper_half)
     # print(lower_half)
+    ##calculating true positive,false positive,false negative and true negative values.
     tp = 0.0
     fp = 0.0
     fn = 0.0
@@ -69,16 +80,22 @@ for m in threshold:
     tpr.append(sensitivity)
     fpr.append(1-specificity)
     Precision.append(precision)
+
+###plotting roc curve 
 plt.plot(tpr, fpr)
 plt.xlabel("TPR")
 plt.ylabel("FPR")
 plt.title("ROC curve")
 plt.show()
+
+###plotting pr curve
 plt.plot(tpr, Precision)
 plt.xlabel("TPR")
 plt.ylabel("PRECISION")
 plt.title("PR curve")
 plt.show()
+
+###printing model's accuracy.
 y_pred = model.predict(x_test)
 acc = accuracy_score(y_pred, y_test)
 print("Accuracy is: ", acc)
