@@ -6,6 +6,7 @@ This implementation is shown in batch_gradient.py file.
 In Stochastic Gradient Descent, at each iteration, a single training example is randomly chosen from the training dataset.The gradient of the cost function with respect to the parameters of the model is computed using this randomly chosen example(s).The parameters are then updated scaled by a learning rate.This process is repeated for a fixed number of iterations or until convergence criteria are met.
 
 Logistic regression is used for binary classification tasks, where the goal is to predict the probability of an instance belonging to a particular class. It models the relationship between one or more independent variables and a binary outcome using the logistic function, which maps any real-valued input to a value between 0 and 1. By fitting a logistic curve to the data, logistic regression estimates the probability of the outcome occurring.
+This algorithm is implemented in logistic_regression.py file.
 
 Cross-validation is a technique used in machine learning to assess the performance and generalization ability of a model. It involves partitioning the dataset into multiple subsets, or folds, training the model on several combinations of these folds, and evaluating its performance on the remaining data.By iteratively training and testing the model on different subsets, cross-validation provides a more robust estimate of the model's performance and helps to mitigate issues such as overfitting.
 This algorithm is shown in cross_validation.py file.
