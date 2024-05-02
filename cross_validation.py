@@ -1,3 +1,7 @@
+###This code shows necessary EDA steps and then the  results of LogisticRegression, RandomForestClassifier and xgboost classifier models using 
+###10-fold cross validation for the dataset heart.csv.
+
+##importing neccesary libraries.
 import pandas as pd
 from sklearn.metrics import accuracy_score
 from sklearn.linear_model import LogisticRegression
@@ -34,14 +38,15 @@ for i in x:
     plt.show()
     plt.xlabel("feature")
     plt.ylabel("frequency")
+
+##performing 10-fold cross-validation.
 acc_sc = []
 k = 10
 kf = KFold(n_splits=k, random_state=42, shuffle=True)
 for train_index, test_index in kf.split(x):
     x_train, x_test = x.iloc[train_index], x.iloc[test_index]
     y_train, y_test = y.iloc[train_index], y.iloc[test_index]
-
-    ##encoding is not required as the data set does not have string values in any of the features.
+    
     ## standardizing the splitted data
     scaler = StandardScaler()
     x_train = scaler.fit_transform(x_train)
