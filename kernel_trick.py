@@ -1,25 +1,44 @@
-### This code shows the 
+### This code shows the power of kernel trick of being able to compute the same result in a lower dimension function as the result 
+###in higher dimension function.
+
+from matplotlib import pyplot as plt
+import numpy as np
+from sklearn import svm
+from sklearn.inspection import DecisionBoundaryDisplay
+from numpy.linalg import norm
+import pandas as pd
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
-##Let x1 = [3, 6], x2 = [10, 10].  Use the above “Transform” function to transform these vectors to a higher dimension and
-## compute the dot product in a higher dimension. Print the value.    Implement a polynomial kernel K(a,b) =
+
+##ques) Let x1 = [3, 6], x2 = [10, 10].  Use a  Transform function to transform the vectors to a higher dimension and
+## compute the dot product in a higher dimension. Print the value.Implement a polynomial kernel K(a,b) =
 ## a[0]**2 * b[0]**2 + 2*a[0]*b[0]*a[1]*b[1] + a[1]**2 * b[1]**2 . Apply this kernel function and evaluate the output for the
 ## same x1 and x2 values. Notice that the result is the same in both scenarios demonstrating the power of kernel trick.
 
+
+###printing the result of dot product in lower dimension.
 def kernel(x1, x2):
     #k_func = a[0] ** 2 * b[0] ** 2 + 2 * a[0] * b[0] * a[1] * b[1] + a[1] ** 2 * b[1] ** 2
     k_trick = x1[0] ** 2 * x2[0] ** 2 + 2 * x1[0] * x2[0] * x1[1] * x2[1] + x1[1] ** 2 * x2[1] ** 2
     print("dot product using kernel", k_trick)
+
+###printing the result of dot product in higher dimension.
 def dot_prod(X1, X2, x1, x2):
     result = np.dot(X1, X2)
     print("dot product in higher dim", result)
     kernel(x1, x2)
+
+###plotting 3-d plot.
 def transform(X1, X2, x1, x2):
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
     ax.scatter(X1, X2)
-    #plt.show()
+    plt.show()
     dot_prod(X1, X2, x1, x2)
+
+###computing higher order function.
 def threeD(x1,x2):
     X1 = []
     X2 = []
@@ -44,7 +63,8 @@ def threeD(x1,x2):
     X2.append(cal1b)
     print("x2 after higher dim cal", X2)
     transform(X1, X2, x1, x2)
-
+    
+###Scatter plotting the points.
 def phi(x1,x2, label):
     plt.scatter(x1, x2, c=label)
     # plt.show()
