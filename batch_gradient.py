@@ -1,4 +1,6 @@
-###batch-gradient descent implementation
+### Implementing batch-gradient descent for the dataset simulated_data_multiple_linear_regression_for_ML.csv. This code shows how the cost function 
+### comes down and at convergenge prints all the parameters(theta values).
+
 import numpy as np
 import pandas as pd
 df = pd.read_csv("/home/ibab/simulated_data_multiple_linear_regression_for_ML.csv")
