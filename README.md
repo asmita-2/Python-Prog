@@ -1,5 +1,7 @@
 My repository include the following machine learning lab programs.  
+
 Batch Gradient Descent computes the gradient of the cost function with respect to the parameters of the model using the entire training dataset. It then update the parameters with the help of a parameter called the learning rate(alpha).The algorithm continues to iteratively update the parameters, gradually reducing the cost function until it converges to a minimum or reaches a predefined stopping criteria.
+This implementation is shown in batch_gradient.py file.
 
 In Stochastic Gradient Descent, at each iteration, a single training example is randomly chosen from the training dataset.The gradient of the cost function with respect to the parameters of the model is computed using this randomly chosen example(s).The parameters are then updated scaled by a learning rate.This process is repeated for a fixed number of iterations or until convergence criteria are met.
 
