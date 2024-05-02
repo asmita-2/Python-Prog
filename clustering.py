@@ -1,24 +1,47 @@
-##K-MEANS
+###This code shows the implementation of k-means clustering and heirarchical clustering by generating data from np.random.standard_normal().
 
-#The seed() function initializes the random number generator with a specified seed value. When you set a seed value, you ensure that the sequence of random numbers
-#generated is reproducible. In other words, every time you run the code with the same seed, you'll get the same sequence of random numbers.
-#Here, X is initialized as a NumPy array of shape (50, 2). It contains random numbers sampled from a standard normal distribution
-#(mean = 0, standard deviation = 1).
+import pandas as pd
+import numpy as np
+from matplotlib import pyplot as plt
+from statsmodels.datasets import get_rdataset
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+from ISLP import load_data
+from sklearn.cluster import KMeans, AgglomerativeClustering
+from scipy.cluster.hierarchy import dendrogram, cut_tree
+from ISLP.cluster import compute_linkage
+
+
+## K-MEANS 
+
+##The seed() function initializes the random number generator with a specified seed value. Setting a seed value, ensures that the sequence of random numbers
+##generated is reproducible. In other words, every time the code is runned the code with the same seed, will give the same sequence of random numbers.
+##Here, X is initialized as a NumPy array of shape (50, 2). It contains random numbers sampled from a standard normal distribution
+##(mean = 0, standard deviation = 1).
 np.random.seed(0)
 x = np.random.standard_normal((50, 2))
 # print(x)
+
+##for first col till row 25 generated values are increased by 3 while second col till row 25 generated values are decresed by 4
 x[:25, 0] += 3
 x[:25, 1] -= 4
 # print(x)
+
+###fitting the model and setting no. of clusters required as 2
 kmeans = KMeans(n_clusters=2, random_state=2, n_init=20).fit(x)
 a = kmeans.labels_
 # print(a)
+
+###plotting the clusters.
 fig, ax = plt.subplots(1, 1, figsize=(8, 8))
 ax.scatter(x[:, 0], x[:, 1], c=a)
 ax.set_title("k-means clustering results with k=2")
 plt.show()
 
+###here fitting the model for 3 clusters.
 kmeans = KMeans(n_clusters=3, random_state=3, n_init=20).fit(x)
+
+###plotting the 3 clusters.
 fig, ax = plt.subplots(figsize=(8, 8))
 ax.scatter(x[:, 0], x[:, 1], c=kmeans.labels_)
 ax.set_title("k-means clustering results with k=3")
