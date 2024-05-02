@@ -1,5 +1,16 @@
-###Try classifying classes 1 and 2 from the iris dataset with SVMs, with the 2 first features. Leave out 10% of each class and test prediction
-###performance on these observations.
+###This code explores the usage of different kernels to implement svm on first two features of iris.csv dataset and classify the 2 classes in it.
+
+###importing libraries
+from matplotlib import pyplot as plt
+import numpy as np
+from sklearn import svm
+from sklearn.inspection import DecisionBoundaryDisplay
+from numpy.linalg import norm
+import pandas as pd
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+##loading data and seleting required features and label.
 
 data = pd.read_csv("/home/ibab/movedfiles/Iris.csv")
 df = data.iloc[26:65, :]
@@ -16,7 +27,8 @@ for i in range(len(y)):
         app.append(1)
 y = np.array(app)
 #print(x, y)
-# Plotting settings
+
+# Plotting the data.
 fig, ax = plt.subplots(figsize=(4, 3))
 x_min, x_max, y_min, y_max = 4, 8, -2, 8
 ax.set(xlim=(x_min, x_max), ylim=(y_min, y_max))
@@ -26,6 +38,7 @@ scatter = ax.scatter(X[:, 0], X[:, 1], s=150, c=y, label=y, edgecolors="k")
 ax.legend(*scatter.legend_elements(), loc="upper right", title="Classes")
 ax.set_title("Samples in two-dimensional feature space")
 _ = plt.show()
+
 def plot_training_data_with_decision_boundary(kernel):
     # Train the SVC
     clf = svm.SVC(kernel=kernel, gamma=2).fit(X, y)
@@ -65,12 +78,15 @@ def plot_training_data_with_decision_boundary(kernel):
     ax.legend(*scatter.legend_elements(), loc="upper right", title="Classes")
     ax.set_title(f" Decision boundaries of {kernel} kernel in SVC")
     _ = plt.show()
+
+##exploring different kernels.
 def main():
     #kernel = 'poly'
     #kernel = 'rbf'
     #kernel = 'linear'
     kernel = 'sigmoid'
     plot_training_data_with_decision_boundary(kernel)
+    
 if __name__=="__main__":
     main()
 
