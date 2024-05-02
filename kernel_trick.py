@@ -1,3 +1,6 @@
+### This code shows the 
+
+
 ##Let x1 = [3, 6], x2 = [10, 10].  Use the above “Transform” function to transform these vectors to a higher dimension and
 ## compute the dot product in a higher dimension. Print the value.    Implement a polynomial kernel K(a,b) =
 ## a[0]**2 * b[0]**2 + 2*a[0]*b[0]*a[1]*b[1] + a[1]**2 * b[1]**2 . Apply this kernel function and evaluate the output for the
