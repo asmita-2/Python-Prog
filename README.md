@@ -1,4 +1,4 @@
-My repository include the following machine learning lab programs.  
+My repository contains the implementation of the following machine learning concepts:  
 
 Batch Gradient Descent computes the gradient of the cost function with respect to the parameters of the model using the entire training dataset. It then update the parameters with the help of a parameter called the learning rate(alpha).The algorithm continues to iteratively update the parameters, gradually reducing the cost function until it converges to a minimum or reaches a predefined stopping criteria.
 This implementation is shown in batch_gradient.py file.
