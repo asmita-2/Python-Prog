@@ -34,4 +34,4 @@ This is implemented in pca.py file.
 
 9.
 Clustering is an unsupervised learning technique used to group similar data points together in a dataset. It aims to discover hidden patterns or structures within the data by partitioning it into distinct clusters, where data points within the same cluster are more similar to each other than those in different clusters. Common clustering algorithms include K-means and hierarchical clustering.
-This is shown in clustering.py file.
+This is shown in clustering.py file(includes implementation of k-means from scratch).
